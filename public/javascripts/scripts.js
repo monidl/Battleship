@@ -68,6 +68,18 @@ socket.on("here is your player", function(player) {
   ships = player.ships;
 });
 
+socket.on("coloredShip", function(x, y) {
+  var shipsContainer = document.getElementById("ships");
+  var div = document.createElement("div");
+  div.style.top = +(y * mapSize) + "px";
+  div.style.left = +(x * mapSize) + "px";
+  div.style.width = +(1 * mapSize) + "px";
+  div.style.height = +(1 * mapSize) + "px";
+  div.classList.add("color");
+
+  shipsContainer.appendChild(div);
+});
+
 socket.on("here is the size", function(size) {
   console.log(`frontend: here is the size: `, size);
   mapSize = size;

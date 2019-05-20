@@ -58,6 +58,7 @@ module.exports = function(io) {
         socket.emit('wasHit', bombResult);
         console.log('bombResult'); console.log(bombResult);
         bombResult.forEach((bombSuccess) => {
+          socket.broadcast.emit('coloredShip', x, y);
           console.log('shipHit!');
           socket.broadcast.emit('shipHit', {
             by: Battleship.getPlayer(params.id).getName(),
